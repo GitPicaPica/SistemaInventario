@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200810222334_AddAgregarProductoDB.cs" />
+    <Compile Remove="Migrations\20200810222334_AddAgregarProductoDB.Designer.cs" />
+    <Compile Remove="Migrations\20200810225111_AddAgregarProducto.cs" />
+    <Compile Remove="Migrations\20200810225111_AddAgregarProducto.Designer.cs" />
+    <Compile Remove="Migrations\20200810231738_AddAgregarProducto.cs" />
+    <Compile Remove="Migrations\20200810231738_AddAgregarProducto.Designer.cs" />
+    <Compile Remove="Migrations\20200811123939_AddagregarProducto.cs" />
+    <Compile Remove="Migrations\20200811123939_AddagregarProducto.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />

@@ -21,13 +21,14 @@ function loadDataTable() {
             }
         },
         "ajax": {
-            "url": "/Admin/Bodega/ObtenerTodos"
+            "url": "/Admin/Marca/ObtenerTodos"
         },
         "columns": [
-            { "data": "nombre", "width": "20%" },
-            { "data": "descripcion", "width": "40%" },
+            { "data": "nombre", "width": "40%" },
+           
             {
                 "data": "estado",
+              
                 "render": function (data) {
                     if (data == true) {
                         return "Activo";
@@ -41,18 +42,19 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
                     return `
-                            <div class="text-center">
-                                <a href="/Admin/Bodega/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a onclick=Delete("/Admin/Bodega/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                            `;
+                        <div class="text-center">
+                            <a href="/Admin/Marca/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a onclick=Delete("/Admin/Marca/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                        `;
                 }, "width": "20%"
             }
         ]
+        
     });
 }
 
@@ -60,7 +62,7 @@ function loadDataTable() {
 function Delete(url) {
 
     swal({
-        title: "Esta Seguro que quiere Eliminar la Bodega?",
+        title: "Esta Seguro que quiere Eliminar la Marca?",
         text: "Este Registro no se podra recuperar",
         icon: "warning",
         buttons: true,
@@ -83,3 +85,16 @@ function Delete(url) {
         }
     });
 }
+
+
+//$(document).ready(function () {
+//    $('#tblDatos').DataTable({
+//        "language": {
+//            "lengthMenu": "Mostrar _MENU_ entrada",
+//            "zeroRecords": "Nothing found - sorry",
+//            "info": "Showing page _PAGE_ of _PAGES_",
+//            "infoEmpty": "No records available",
+//            "infoFiltered": "(filtered from _MAX_ total records)"
+//        }
+//    });
+//});

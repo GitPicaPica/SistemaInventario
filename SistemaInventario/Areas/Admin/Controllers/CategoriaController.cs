@@ -9,11 +9,11 @@ using SistemaInventario.Modelos;
 namespace SistemaInventario.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BodegaController : Controller
+    public class MarcaController : Controller
     {
         private readonly IUnidadTrabajo _unidadTrabajo;
 
-        public BodegaController(IUnidadTrabajo unidadTrabajo)
+        public MarcaController(IUnidadTrabajo unidadTrabajo)
         {
             _unidadTrabajo = unidadTrabajo;
         }
@@ -27,42 +27,42 @@ namespace SistemaInventario.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            Bodega bodega = new Bodega();
+            Marca marca = new Marca();
             if(id==null)
             {
                 //Esto es para Crear nuevo Registro
-                return View(bodega);
+                return View(marca);
             }
             //Esto es para Actualizar
-            bodega = _unidadTrabajo.Bodega.Obtener(id.GetValueOrDefault());
+            marca = _unidadTrabajo.Marca.Obtener(id.GetValueOrDefault());
 
-            if(bodega ==null)
+            if(marca ==null)
             {
                 return NotFound();
             }
-            return View(bodega);
+            return View(marca);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Bodega bodega)
+        public IActionResult Upsert(Marca marca)
         {
             if(ModelState.IsValid)
             
                 { 
                 
-                    if(bodega.Id==0)
+                    if(marca.Id==0)
                     {
-                        _unidadTrabajo.Bodega.Agregar(bodega);
+                        _unidadTrabajo.Marca.Agregar(marca);
                     }
                     else
                     {
-                        _unidadTrabajo.Bodega.Actualizar(bodega);
+                        _unidadTrabajo.Marca.Actualizar(marca);
                     }
                     _unidadTrabajo.Guardar();
                     return RedirectToAction(nameof(Index));
                 }
-                return View(bodega);
+                return View(marca);
             }
         
         
@@ -71,21 +71,21 @@ namespace SistemaInventario.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult ObtenerTodos()
         {
-            var todos = _unidadTrabajo.Bodega.ObtenerTodos();
+            var todos = _unidadTrabajo.Marca.ObtenerTodos();
             return Json(new { data = todos });
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var bodegaDb = _unidadTrabajo.Bodega.Obtener(id);
-            if(bodegaDb==null)
+            var marcaDb = _unidadTrabajo.Marca.Obtener(id);
+            if(marcaDb==null)
             {
                 return Json(new { success = false, message = "Error al Borrar" });
             }
-            _unidadTrabajo.Bodega.Remover(bodegaDb);
+            _unidadTrabajo.Marca.Remover(marcaDb);
             _unidadTrabajo.Guardar();
-            return Json(new { success = true, message = "Bodega Borrada Existosamente" });
+            return Json(new { success = true, message = "Marca Borrada Existosamente" });
         }
 
         #endregion
