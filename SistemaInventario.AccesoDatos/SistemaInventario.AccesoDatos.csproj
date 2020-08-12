@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20200810231738_AddAgregarProducto.Designer.cs" />
     <Compile Remove="Migrations\20200811123939_AddagregarProducto.cs" />
     <Compile Remove="Migrations\20200811123939_AddagregarProducto.Designer.cs" />
+    <Compile Remove="Migrations\20200812125652_ActualizarTbProducto.cs" />
+    <Compile Remove="Migrations\20200812125652_ActualizarTbProducto.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

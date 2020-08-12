@@ -9,6 +9,7 @@ namespace SistemaInventario.AccesoDatos.Repositorio.IRepositorio
         IBodegaRepositorio Bodega { get; }
         IcategoriaRepositorio Categoria { get; }
         IMarcaRepositorio Marca { get;  }
+        IProductoRepositorio Producto { get; }
 
         void Guardar();
     }

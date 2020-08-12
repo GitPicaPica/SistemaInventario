@@ -1,0 +1,17 @@
+﻿body {
+}
+
+table th{
+
+    text-align:left;
+    padding: 10px;
+    background:#3d7ba8;
+    color:#FFF;
+}
+table tr:nth-child(odd){
+    background:#FFF;
+
+}
+table td{
+    padding:30px;
+}
