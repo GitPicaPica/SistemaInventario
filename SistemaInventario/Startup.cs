@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using SistemaInventario.AccesoDatos.Data;
 using SistemaInventario.AccesoDatos.Repositorio.IRepositorio;
 using SistemaInventario.AccesoDatos.Repositorio;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using SistemaInventario.Utilidades;
 
 namespace SistemaInventario
 {
@@ -32,8 +34,9 @@ namespace SistemaInventario
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSingleton<IEmailSender, EmailSender>();
                   services.AddScoped<IUnidadTrabajo, UnidadTrabajo>();
             services.AddControllersWithViews();
             services.AddRazorPages();
